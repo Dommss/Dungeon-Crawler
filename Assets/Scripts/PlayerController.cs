@@ -28,13 +28,18 @@ public class PlayerController : MonoBehaviour
         else
         {
             animator.SetBool("isMoving", false);
-            rb.velocity = new Vector2(0f, 0f);
+            // rb.velocity = new Vector3(0f, 0f);
         }
+    }
+
+    void FixedUpdate()
+    {
+        rb.MovePosition(transform.position + (Vector3)movement * Time.deltaTime * moveSpeed);
     }
 
     void OnMove(InputValue value)
     {
-        rb.velocity = value.Get<Vector2>() * moveSpeed;
-        movement = rb.velocity;
+        Vector3 moveInput = value.Get<Vector2>() * moveSpeed;
+        movement = moveInput;
     }
 }
