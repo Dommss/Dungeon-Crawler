@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -11,13 +12,16 @@ public class PlayerHealth : MonoBehaviour
         instance = this;
     }
 
-
     [SerializeField] private float currentHealth, maxHealth;
+    [SerializeField] private Slider healthSlider;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = currentHealth;
     }
 
     // Update is called once per frame
@@ -34,5 +38,7 @@ public class PlayerHealth : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+
+        healthSlider.value = currentHealth;
     }
 }
