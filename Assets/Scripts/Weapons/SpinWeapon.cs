@@ -5,7 +5,12 @@ using UnityEngine;
 public class SpinWeapon : MonoBehaviour
 {
 
-    [SerializeField] private float rotateSpeed;
+    [SerializeField] float rotateSpeed;
+    [SerializeField] Transform holder, fireballToSpawn;
+    [SerializeField] float timeBetweenSpawn;
+
+    float spawnCounter;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +20,14 @@ public class SpinWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = Quaternion.Euler(0f, 0f, transform.rotation.eulerAngles.z + (rotateSpeed * Time.deltaTime));
+        holder.rotation = Quaternion.Euler(0f, 0f, holder.rotation.eulerAngles.z + (rotateSpeed * Time.deltaTime));
+
+        spawnCounter -= Time.deltaTime;
+        if (spawnCounter <= 0)
+        {
+            spawnCounter = timeBetweenSpawn;
+
+            Instantiate(fireballToSpawn, fireballToSpawn.position, fireballToSpawn.rotation, holder).gameObject.SetActive(true);
+        }
     }
 }

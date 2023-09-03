@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
     private Transform target;
     private Rigidbody2D rb;
 
+    [SerializeField] float health = 5f;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float damage;
     [SerializeField] private float hitWaitTime = 1f;
@@ -36,6 +37,16 @@ public class EnemyController : MonoBehaviour
         {
             PlayerHealth.instance.TakeDamage(damage);
             hitCounter = hitWaitTime;
+        }
+    }
+
+    public void TakeDamage(float damageToTake)
+    {
+        health -= damageToTake;
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }
