@@ -21,12 +21,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        // Vector3 moveInput = new Vector3(0f, 0f, 0f);
-        // moveInput.x = Input.GetAxisRaw("Horizontal");
-        // moveInput.y = Input.GetAxisRaw("Vertical");
-        // moveInput.Normalize();
-        // transform.position += moveInput * moveSpeed * Time.deltaTime;
-
         if (movement != Vector2.zero)
         {
             animator.SetBool("isMoving", true);
@@ -34,6 +28,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             animator.SetBool("isMoving", false);
+            rb.velocity = new Vector2(0f, 0f);
         }
     }
 

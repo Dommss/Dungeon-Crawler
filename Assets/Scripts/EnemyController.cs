@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        target = FindObjectOfType<PlayerController>().transform;
+        target = PlayerHealth.instance.transform;
     }
 
 
