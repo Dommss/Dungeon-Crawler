@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             animator.SetBool("isMoving", false);
-            // rb.velocity = new Vector3(0f, 0f);
         }
     }
 

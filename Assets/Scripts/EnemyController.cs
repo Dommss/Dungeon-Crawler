@@ -8,10 +8,12 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D rb;
 
     [SerializeField] float health = 5f;
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float damage;
-    [SerializeField] private float hitWaitTime = 1f;
+    [SerializeField] float moveSpeed;
+    [SerializeField] float damage;
+    [SerializeField] float hitWaitTime = 1f;
+    [SerializeField] float knockBackTime = .5f;
 
+    private float knockBackCounter;
     private float hitCounter;
 
     void Awake()
@@ -23,6 +25,21 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        if (knockBackCounter > 0)
+        {
+            knockBackCounter -= Time.deltaTime;
+
+            if (moveSpeed > 0)
+            {
+                moveSpeed = -moveSpeed * 2f;
+            }
+
+            if (knockBackCounter <= 0)
+            {
+                moveSpeed = Mathf.Abs(moveSpeed * .5f);
+            }
+        }
+
         rb.velocity = (target.position - transform.position).normalized * moveSpeed;
 
         if (hitCounter > 0f)
@@ -47,6 +64,16 @@ public class EnemyController : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+        }
+    }
+
+    public void TakeDamage(float damageToTake, bool shouldKnockback)
+    {
+        TakeDamage(damageToTake);
+
+        if (shouldKnockback)
+        {
+            knockBackCounter = knockBackTime;
         }
     }
 }
