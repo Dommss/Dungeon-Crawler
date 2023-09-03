@@ -2,8 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
+    public static PlayerHealth instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
 
     [SerializeField] private float currentHealth, maxHealth;
 
