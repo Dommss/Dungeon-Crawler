@@ -6,7 +6,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed;
+    [Header("Stats")]
+    [SerializeField] public float pickupRange = 1.5f;
+    [SerializeField] public float moveSpeed;
 
     private Animator animator;
     private Rigidbody2D rb;
