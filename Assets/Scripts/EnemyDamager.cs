@@ -7,6 +7,7 @@ public class EnemyDamager : MonoBehaviour
     [SerializeField] float damageAmount;
     [SerializeField] float lifeTime, growSpeed = 2.5f;
     [SerializeField] bool shouldKnockback;
+    [SerializeField] bool destroyParent;
 
     Vector3 targetSize;
 
@@ -28,6 +29,11 @@ public class EnemyDamager : MonoBehaviour
             if (transform.localScale.x == 0f)
             {
                 Destroy(gameObject);
+
+                if (destroyParent)
+                {
+                    Destroy(transform.parent.gameObject);
+                }
             }
         }
     }

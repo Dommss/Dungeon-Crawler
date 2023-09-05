@@ -11,11 +11,7 @@ public class DamageNumber : MonoBehaviour
     [SerializeField] float lifetime;
     private float lifeCounter;
 
-    void Start()
-    {
-        lifeCounter = lifetime;
-    }
-
+    [SerializeField] float floatSpeed = 1f;
 
     void Update()
     {
@@ -25,9 +21,11 @@ public class DamageNumber : MonoBehaviour
 
             if (lifeCounter <= 0)
             {
-                Destroy(gameObject);
+                DamageNumberController.instance.PlaceInPool(this);
             }
         }
+
+        transform.position += Vector3.up * floatSpeed * Time.deltaTime;
     }
 
     public void Setup(int damageDisplay)
