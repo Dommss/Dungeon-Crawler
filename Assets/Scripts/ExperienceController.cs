@@ -12,9 +12,15 @@ public class ExperienceController : MonoBehaviour
     }
 
     [SerializeField] int currentExp;
+    [SerializeField] ExpPickup pickup;
 
     public void GetExp(int amountToGet)
     {
         currentExp += amountToGet;
+    }
+
+    public void SpawnExp(Vector3 position)
+    {
+        Instantiate(pickup, position, Quaternion.identity);
     }
 }

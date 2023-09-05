@@ -5,13 +5,18 @@ using TMPro;
 
 public class DamageNumber : MonoBehaviour
 {
-
+    [SerializeField] EnemyController enemyController;
     [SerializeField] TMP_Text damageText;
 
     [SerializeField] float lifetime;
     private float lifeCounter;
 
     [SerializeField] float floatSpeed = 1f;
+
+    private void Awake()
+    {
+        enemyController = FindObjectOfType<EnemyController>();
+    }
 
     void Update()
     {
@@ -31,7 +36,6 @@ public class DamageNumber : MonoBehaviour
     public void Setup(int damageDisplay)
     {
         lifeCounter = lifetime;
-
         damageText.text = damageDisplay.ToString();
     }
 }
