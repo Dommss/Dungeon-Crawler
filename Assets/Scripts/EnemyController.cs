@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+
     private Transform target;
     private Rigidbody2D rb;
 
@@ -13,6 +14,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float health = 5f;
     [SerializeField] float moveSpeed;
     [SerializeField] float damage;
+    [SerializeField] int expToGive = 1;
     [SerializeField] float hitWaitTime = 1f;
     [SerializeField] float knockBackTime = .5f;
 
@@ -66,7 +68,7 @@ public class EnemyController : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
-            ExperienceController.instance.SpawnExp(transform.position);
+            ExperienceController.instance.SpawnExp(transform.position, expToGive);
         }
         DamageNumberController.instance.SpawnDamage(damageToTake, transform.position);
     }

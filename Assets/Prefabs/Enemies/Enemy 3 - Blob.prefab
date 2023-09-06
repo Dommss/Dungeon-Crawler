@@ -113,13 +113,9 @@ MonoBehaviour:
   health: 15
   moveSpeed: 0.9
   damage: 10
+  expToGive: 20
   hitWaitTime: 1
   knockBackTime: 0.25
-  shouldDuplicate: 1
-  toDuplicate: {fileID: 4133295442531450616, guid: f8566de43aeecb5428e1013dcde4aeb3, type: 3}
-  howManyToSpawn: 3
-  shouldImmune: 0
-  immuneCounter: 0
 --- !u!114 &2861875802097943980
 MonoBehaviour:
   m_ObjectHideFlags: 0

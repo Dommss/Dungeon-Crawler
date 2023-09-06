@@ -5,7 +5,7 @@ using UnityEngine;
 public class ExpPickup : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] int expValue;
+    [SerializeField] public int expValue;
     [SerializeField] float moveSpeed;
     private bool movingToPlayer;
 

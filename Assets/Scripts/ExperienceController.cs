@@ -11,16 +11,47 @@ public class ExperienceController : MonoBehaviour
         instance = this;
     }
 
+    [Header("Experience")]
     [SerializeField] int currentExp;
     [SerializeField] ExpPickup pickup;
+
+    [Header("Levels")]
+    [SerializeField] List<int> expLevels;
+    [SerializeField] int currentLevel = 1, levelCount = 100;
+
+    private void Start()
+    {
+        while (expLevels.Count < levelCount)
+        {
+            expLevels.Add(Mathf.CeilToInt(expLevels[expLevels.Count - 1] * 1.1f));
+        }
+    }
 
     public void GetExp(int amountToGet)
     {
         currentExp += amountToGet;
+
+        if (currentExp >= expLevels[currentLevel])
+        {
+            LevelUp();
+        }
+
+        UIController.instance.UpdateExperience(currentExp, expLevels[currentLevel], currentLevel);
     }
 
-    public void SpawnExp(Vector3 position)
+    public void SpawnExp(Vector3 position, int expValue)
     {
-        Instantiate(pickup, position, Quaternion.identity);
+        Instantiate(pickup, position, Quaternion.identity).expValue = expValue;
+    }
+
+    void LevelUp()
+    {
+        currentExp -= expLevels[currentLevel];
+        currentLevel++;
+
+        if (currentLevel >= expLevels.Count)
+        {
+            currentLevel = expLevels.Count - 1;
+        }
     }
 }
