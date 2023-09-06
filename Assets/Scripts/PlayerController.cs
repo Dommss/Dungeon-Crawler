@@ -6,9 +6,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     [Header("Stats")]
     [SerializeField] public float pickupRange = 1.5f;
     [SerializeField] public float moveSpeed;
+    [SerializeField] public Weapon activeWeapon;
 
     private Animator animator;
     private Rigidbody2D rb;
@@ -17,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        instance = this;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }

@@ -15,6 +15,8 @@ public class UIController : MonoBehaviour
 
     [SerializeField] public Slider explvlSlider;
     public TMP_Text explvlText;
+    public LevelUpSelectionButton[] levelUpButtons;
+    public GameObject levelUpPanel;
 
     public void UpdateExperience(int currentExp, int levelExp, int currentLvl)
     {

@@ -36,7 +36,7 @@ public class ExperienceController : MonoBehaviour
             LevelUp();
         }
 
-        UIController.instance.UpdateExperience(currentExp, expLevels[currentLevel], currentLevel);
+        UIController.instance.UpdateExperience(currentExp, expLevels[currentLevel], currentLevel);          // UI Controls
     }
 
     public void SpawnExp(Vector3 position, int expValue)
@@ -53,5 +53,9 @@ public class ExperienceController : MonoBehaviour
         {
             currentLevel = expLevels.Count - 1;
         }
+
+        UIController.instance.levelUpPanel.SetActive(true);     // Trigger lvlup UI
+        Time.timeScale = 0f;        // Pause Game
+        UIController.instance.levelUpButtons[1].UpdateButtonDisplay(PlayerController.instance.activeWeapon);
     }
 }

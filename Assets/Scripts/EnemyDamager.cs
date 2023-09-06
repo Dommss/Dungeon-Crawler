@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyDamager : MonoBehaviour
 {
-    [SerializeField] float damageAmount;
-    [SerializeField] float lifeTime, growSpeed = 2.5f;
+    [SerializeField] public float damageAmount;
+    [SerializeField] public float lifeTime, growSpeed = 2.5f;
     [SerializeField] bool shouldKnockback;
     [SerializeField] bool destroyParent;
 
