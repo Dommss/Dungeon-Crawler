@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1353282722205511119}
   - component: {fileID: 3834453194560844395}
   - component: {fileID: 8491834252932940003}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy 2 - Wulfen
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -115,6 +115,10 @@ MonoBehaviour:
   damage: 2.5
   hitWaitTime: 1
   knockBackTime: 0.75
+  shouldDuplicate: 0
+  toDuplicate: {fileID: 0}
+  shouldImmune: 0
+  immuneCounter: 0
 --- !u!114 &8491834252932940003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,7 +145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4948369718849483620}
   - component: {fileID: 4771422861280913534}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +206,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 785924507
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -237660802, guid: 99f10abcf979e904b883da0c6922d74f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

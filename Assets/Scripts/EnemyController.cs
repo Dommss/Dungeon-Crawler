@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
     private Transform target;
     private Rigidbody2D rb;
-    private CircleCollider2D trigger;
 
     [Header("Stats")]
     [SerializeField] float health = 5f;
@@ -15,30 +16,13 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float hitWaitTime = 1f;
     [SerializeField] float knockBackTime = .5f;
 
-    [Header("Duplication")]
-    [SerializeField] bool shouldDuplicate;
-    [SerializeField] GameObject toDuplicate;
-
-    [Header("Immunity")]
-    [SerializeField] public bool shouldImmune;
-    public float immuneCounter;
-
     private float knockBackCounter;
     private float hitCounter;
 
     void Awake()
     {
-        trigger = GetComponent<CircleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         target = PlayerHealth.instance.transform;
-    }
-
-    private void Start()
-    {
-        if (shouldImmune)
-        {
-            immuneCounter = 0.75f;
-        }
     }
 
     void Update()
@@ -64,11 +48,6 @@ public class EnemyController : MonoBehaviour
         {
             hitCounter -= Time.deltaTime;
         }
-
-        if (immuneCounter > 0f)
-        {
-            immuneCounter -= Time.deltaTime;
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -82,25 +61,13 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(float damageToTake)
     {
-        if (immuneCounter <= 0)
-        {
-            health -= damageToTake;
-        }
+        health -= damageToTake;
 
         if (health <= 0)
         {
             Destroy(gameObject);
             ExperienceController.instance.SpawnExp(transform.position);
-
-            if (shouldDuplicate)
-            {
-                for (var i = 0; i < 3; i++)
-                {
-                    Instantiate(toDuplicate, this.transform.position * .5f, Quaternion.identity);
-                }
-            }
         }
-
         DamageNumberController.instance.SpawnDamage(damageToTake, transform.position);
     }
 
@@ -108,7 +75,7 @@ public class EnemyController : MonoBehaviour
     {
         TakeDamage(damageToTake);
 
-        if (shouldKnockback && immuneCounter <= 0f)
+        if (shouldKnockback)
         {
             knockBackCounter = knockBackTime;
         }

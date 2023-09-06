@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8458317307527834144}
   - component: {fileID: 7959463335644297652}
   - component: {fileID: 7610967657267027195}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy 5 - Wraith
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -115,6 +115,10 @@ MonoBehaviour:
   damage: 10
   hitWaitTime: 1
   knockBackTime: 0.5
+  shouldDuplicate: 0
+  toDuplicate: {fileID: 0}
+  shouldImmune: 0
+  immuneCounter: 0
 --- !u!114 &7610967657267027195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,7 +145,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3062213618425216575}
   - component: {fileID: 3867753028359604222}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +206,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 785924507
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -112153730, guid: 99f10abcf979e904b883da0c6922d74f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

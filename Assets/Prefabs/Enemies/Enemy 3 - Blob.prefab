@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7987396776627193756}
   - component: {fileID: 9063008944787440293}
   - component: {fileID: 2861875802097943980}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy 3 - Blob
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -117,6 +117,9 @@ MonoBehaviour:
   knockBackTime: 0.25
   shouldDuplicate: 1
   toDuplicate: {fileID: 4133295442531450616, guid: f8566de43aeecb5428e1013dcde4aeb3, type: 3}
+  howManyToSpawn: 3
+  shouldImmune: 0
+  immuneCounter: 0
 --- !u!114 &2861875802097943980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,7 +146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2338259629276443641}
   - component: {fileID: 379982777966654255}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
