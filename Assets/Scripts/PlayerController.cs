@@ -29,7 +29,10 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        AddWeapon(Random.Range(0, unassignedWeapons.Count));
+        if (assignedWeapons.Count == 0)
+        {
+            AddWeapon(Random.Range(0, unassignedWeapons.Count));
+        }
     }
 
     private void Update()

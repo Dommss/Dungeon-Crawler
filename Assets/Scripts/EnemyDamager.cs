@@ -9,6 +9,12 @@ public class EnemyDamager : MonoBehaviour
     [SerializeField] bool shouldKnockback;
     [SerializeField] bool destroyParent;
 
+    [Header("DOT")]
+    [SerializeField] public bool damageOverTime;
+    [SerializeField] public float timeBetweenSpawn;
+    [SerializeField] private float damageCounter;
+    [SerializeField] private List<EnemyController> enemiesInRange = new List<EnemyController>();
+
     Vector3 targetSize;
 
     void Start()
@@ -36,13 +42,56 @@ public class EnemyDamager : MonoBehaviour
                 }
             }
         }
+
+        if (damageOverTime == true)
+        {
+            damageCounter -= Time.deltaTime;
+            if (damageCounter <= 0)
+            {
+                damageCounter = timeBetweenSpawn;
+
+                for (int i = 0; i < enemiesInRange.Count; i++)
+                {
+                    if (enemiesInRange[i] != null)
+                    {
+                        enemiesInRange[i].TakeDamage(damageAmount, shouldKnockback);
+                    }
+                    else
+                    {
+                        enemiesInRange.RemoveAt(i);
+                        i--;
+                    }
+                }
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Enemy")
+        if (damageOverTime == false)
         {
-            other.GetComponent<EnemyController>().TakeDamage(damageAmount, shouldKnockback);
+            if (other.tag == "Enemy")
+            {
+                other.GetComponent<EnemyController>().TakeDamage(damageAmount, shouldKnockback);
+            }
+        }
+        else
+        {
+            if (other.tag == "Enemy")
+            {
+                enemiesInRange.Add(other.GetComponent<EnemyController>());
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (damageOverTime == true)
+        {
+            if (other.tag == "Enemy")
+            {
+                enemiesInRange.Remove(other.GetComponent<EnemyController>());
+            }
         }
     }
 }

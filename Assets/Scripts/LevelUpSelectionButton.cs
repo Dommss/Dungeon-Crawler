@@ -16,7 +16,7 @@ public class LevelUpSelectionButton : MonoBehaviour
         {
             upgradeDescText.text = theWeapon.stats[theWeapon.weaponLevel].upgradeText;          // Description updater
             weaponIcon.sprite = theWeapon.icon;         // Icon updater
-            nameLevelText.text = theWeapon.name + " - Level: " + theWeapon.weaponLevel;         // Name updater
+            nameLevelText.text = theWeapon.name + " - Level: " + (theWeapon.weaponLevel + 1);         // Name updater
         }
         else
         {

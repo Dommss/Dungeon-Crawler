@@ -25,8 +25,11 @@ public class SpinWeapon : Weapon
         if (spawnCounter <= 0)
         {
             spawnCounter = timeBetweenSpawn;
-
-            Instantiate(fireballToSpawn, fireballToSpawn.position, fireballToSpawn.rotation, holder).gameObject.SetActive(true);
+            for (int i = 0; i < stats[weaponLevel].amount; i++)
+            {
+                float rot = (360f / stats[weaponLevel].amount) * i;
+                Instantiate(fireballToSpawn, fireballToSpawn.position, Quaternion.Euler(0f, 0f, rot), holder).gameObject.SetActive(true);
+            }
         }
 
         if (statsUpdated)
@@ -40,9 +43,9 @@ public class SpinWeapon : Weapon
     {
         damager.damageAmount = stats[weaponLevel].damage;       // Damage scaler
 
-        transform.localScale = Vector3.one * stats[weaponLevel].range;         // Size scaler
+        damager.transform.localScale = Vector3.one * stats[weaponLevel].range;         // Size scaler
 
-        timeBetweenSpawn = stats[weaponLevel].fireRate;         // Activator scale
+        damager.timeBetweenSpawn = stats[weaponLevel].fireRate;         // Activator scale
 
         damager.lifeTime = stats[weaponLevel].duration;
 
