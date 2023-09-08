@@ -8,6 +8,7 @@ public class EnemyDamager : MonoBehaviour
     [SerializeField] public float lifeTime, growSpeed = 2.5f;
     [SerializeField] bool shouldKnockback;
     [SerializeField] bool destroyParent;
+    [SerializeField] bool destroyOnImpact;
 
     [Header("DOT")]
     [SerializeField] public bool damageOverTime;
@@ -73,6 +74,11 @@ public class EnemyDamager : MonoBehaviour
             if (other.tag == "Enemy")
             {
                 other.GetComponent<EnemyController>().TakeDamage(damageAmount, shouldKnockback);
+
+                if (destroyOnImpact == true)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
         else

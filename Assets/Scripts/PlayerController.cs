@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rb;
 
-    private Vector2 movement;
+    public Vector2 playerMovement;
 
     void Awake()
     {
@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (movement != Vector2.zero)
+        if (playerMovement != Vector2.zero)
         {
             animator.SetBool("isMoving", true);
         }
@@ -49,13 +49,13 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(transform.position + (Vector3)movement * Time.deltaTime * moveSpeed);
+        rb.MovePosition(transform.position + (Vector3)playerMovement * Time.deltaTime * moveSpeed);
     }
 
     void OnMove(InputValue value)
     {
         Vector3 moveInput = value.Get<Vector2>() * moveSpeed;
-        movement = moveInput;
+        playerMovement = moveInput;
     }
 
     public void AddWeapon(int weaponNumber)
