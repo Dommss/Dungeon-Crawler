@@ -15,6 +15,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] float damage;
     [SerializeField] int expToGive = 1;
+    [SerializeField] int coinValue = 1;
+    [SerializeField] float coinDropRate = .5f;
     [SerializeField] float hitWaitTime = 1f;
     [SerializeField] float knockBackTime = .5f;
 
@@ -76,6 +78,11 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(gameObject);
             ExperienceController.instance.SpawnExp(transform.position, expToGive);
+
+            if (Random.value <= coinDropRate)
+            {
+                CoinController.instance.DropCoin(transform.position, coinValue);
+            }
         }
         DamageNumberController.instance.SpawnDamage(damageToTake, transform.position);
     }
