@@ -97,7 +97,8 @@ public class PlayerStatController : MonoBehaviour
         UpdateDisplay();
 
         PlayerHealth.instance.maxHealth = health[healthLevel].value;
-        PlayerHealth.instance.currentHealth += health[healthLevel].value - health[healthLevel - 1].value;
+        PlayerHealth.instance.currentHealth = health[healthLevel].value;
+        PlayerHealth.instance.healthSlider.value = health[healthLevel].value;
     }
 
     public void PurchasePickupRange()
