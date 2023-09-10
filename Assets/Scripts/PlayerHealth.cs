@@ -15,6 +15,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] public float currentHealth, maxHealth;
     [SerializeField] private Slider healthSlider;
 
+    [SerializeField] GameObject deathEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,9 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             gameObject.SetActive(false);
+            LevelManager.instance.EndLevel();
+
+            Instantiate(deathEffect, transform.position, transform.rotation);
         }
 
         healthSlider.value = currentHealth;
