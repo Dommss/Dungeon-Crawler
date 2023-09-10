@@ -113,7 +113,7 @@ MonoBehaviour:
   health: 20
   moveSpeed: 1.2
   damage: 2.5
-  expToGive: 15
+  expToGive: 25
   coinValue: 5
   coinDropRate: 0.5
   hitWaitTime: 1
