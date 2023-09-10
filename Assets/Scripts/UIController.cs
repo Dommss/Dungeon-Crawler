@@ -18,6 +18,7 @@ public class UIController : MonoBehaviour
     public LevelUpSelectionButton[] levelUpButtons;
     public GameObject levelUpPanel;
     public TMP_Text coinText;
+    public PlayerStatUpgradeDisplay moveSpeedUpgradeDisplay, healthUpgradeDisplay, pickupRangeUpgradeDisplay, maxWeaponsUpgradeDisplay;
 
     public void UpdateExperience(int currentExp, int levelExp, int currentLvl)
     {
@@ -36,5 +37,29 @@ public class UIController : MonoBehaviour
     public void UpdateCoins()
     {
         coinText.text = "Coins: " + CoinController.instance.currentCoins;
+    }
+
+    public void PurchaseMoveSpeed()
+    {
+        PlayerStatController.instance.PurchaseMoveSpeed();
+        SkipLevelUp();
+    }
+
+    public void PurchaseHealth()
+    {
+        PlayerStatController.instance.PurchaseHealth();
+        SkipLevelUp();
+    }
+
+    public void PurchasePickupRange()
+    {
+        PlayerStatController.instance.PurchasePickupRange();
+        SkipLevelUp();
+    }
+
+    public void PurchaseMaxWeapons()
+    {
+        PlayerStatController.instance.PurchaseMaxWeapons();
+        SkipLevelUp();
     }
 }

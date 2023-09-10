@@ -12,12 +12,13 @@ public class PlayerHealth : MonoBehaviour
         instance = this;
     }
 
-    [SerializeField] private float currentHealth, maxHealth;
+    [SerializeField] public float currentHealth, maxHealth;
     [SerializeField] private Slider healthSlider;
 
     // Start is called before the first frame update
     void Start()
     {
+        maxHealth = PlayerStatController.instance.health[0].value;
         currentHealth = maxHealth;
 
         healthSlider.maxValue = maxHealth;

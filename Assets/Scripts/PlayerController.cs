@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -33,6 +34,10 @@ public class PlayerController : MonoBehaviour
         {
             AddWeapon(Random.Range(0, unassignedWeapons.Count));
         }
+
+        moveSpeed = PlayerStatController.instance.moveSpeed[0].value;
+        pickupRange = PlayerStatController.instance.pickupRange[0].value;
+        maxWeapons = Mathf.RoundToInt(PlayerStatController.instance.maxWeapons[0].value);
     }
 
     private void Update()

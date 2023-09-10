@@ -110,10 +110,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f157a17339e807340958161e6c4c89b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 70
   moveSpeed: 1
   damage: 12.5
-  expToGive: 30
+  expToGive: 45
+  coinValue: 10
+  coinDropRate: 0.8
   hitWaitTime: 1
   knockBackTime: 0.5
 --- !u!114 &5625372984539414850

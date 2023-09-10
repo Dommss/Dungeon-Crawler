@@ -37,7 +37,7 @@ public class EnemyDamager : MonoBehaviour
             {
                 Destroy(gameObject);
 
-                if (destroyParent)
+                if (destroyParent == true)
                 {
                     Destroy(transform.parent.gameObject);
                 }

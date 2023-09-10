@@ -19,23 +19,25 @@ public class SpinWeapon : Weapon
 
     void Update()
     {
+        if (statsUpdated)
+        {
+            statsUpdated = false;
+            SetStats();
+        }
+
         holder.rotation = Quaternion.Euler(0f, 0f, holder.rotation.eulerAngles.z + (rotateSpeed * Time.deltaTime * stats[weaponLevel].speed));
 
         spawnCounter -= Time.deltaTime;
+
         if (spawnCounter <= 0)
         {
-            spawnCounter = timeBetweenSpawn;
+            spawnCounter = stats[weaponLevel].fireRate;
+
             for (int i = 0; i < stats[weaponLevel].amount; i++)
             {
                 float rot = (360f / stats[weaponLevel].amount) * i;
                 Instantiate(fireballToSpawn, fireballToSpawn.position, Quaternion.Euler(0f, 0f, rot), holder).gameObject.SetActive(true);
             }
-        }
-
-        if (statsUpdated)
-        {
-            statsUpdated = false;
-            SetStats();
         }
     }
 
