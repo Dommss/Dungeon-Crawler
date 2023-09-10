@@ -27,12 +27,6 @@ public class PlayerHealth : MonoBehaviour
         healthSlider.value = currentHealth;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void TakeDamage(float damageToTake)
     {
         currentHealth -= damageToTake;
@@ -43,6 +37,8 @@ public class PlayerHealth : MonoBehaviour
             LevelManager.instance.EndLevel();
 
             Instantiate(deathEffect, transform.position, transform.rotation);
+
+            SFXManager.instance.PlaySFX(7);
         }
 
         healthSlider.value = currentHealth;

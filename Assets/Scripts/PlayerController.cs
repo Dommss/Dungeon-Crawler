@@ -63,6 +63,11 @@ public class PlayerController : MonoBehaviour
         playerMovement = moveInput;
     }
 
+    void OnPauseGame()
+    {
+        UIController.instance.PauseUnpause();
+    }
+
     public void AddWeapon(int weaponNumber)
     {
         if (weaponNumber < unassignedWeapons.Count)

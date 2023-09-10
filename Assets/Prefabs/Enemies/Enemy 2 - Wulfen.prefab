@@ -114,7 +114,7 @@ MonoBehaviour:
   moveSpeed: 1.2
   damage: 2.5
   expToGive: 15
-  coinValue: 3
+  coinValue: 5
   coinDropRate: 0.5
   hitWaitTime: 1
   knockBackTime: 0.75
